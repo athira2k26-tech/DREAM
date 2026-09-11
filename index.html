@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DREAM TONIGHT</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app-wrap">
+    <header class="site-header">
+      <div class="brand">
+        <span class="brand-icon">🌙</span>
+        <span class="brand-title">DREAM TONIGHT</span>
+      </div>
+      <div class="header-actions">
+        <div class="theme-switcher" aria-label="Choose website theme">
+          <button class="theme-option active" data-theme-option="nightly" type="button" aria-label="Dark nightly vibe">
+            <span class="theme-icon">🌙</span>
+            <span class="theme-label">Nightly</span>
+          </button>
+          <button class="theme-option" data-theme-option="cozy" type="button" aria-label="Cozy light dream vibe">
+            <span class="theme-icon">☀</span>
+            <span class="theme-label">Cozy Light</span>
+          </button>
+        </div>
+        <button class="about-button" id="aboutButton">About</button>
+      </div>
+    </header>
+
+    <main class="site-main">
+      <section id="landing-screen" class="screen active">
+        <div class="landing-screen">
+          <div class="sky-layer sky-layer-back">
+            <span class="moon"></span>
+            <span class="cloud cloud-one">☁</span>
+            <span class="cloud cloud-two">☁</span>
+            <span class="star star-one">✦</span>
+            <span class="star star-two">✦</span>
+            <span class="floating-particle p1">✦</span>
+            <span class="floating-particle p2">✦</span>
+            <span class="floating-particle p3">✦</span>
+          </div>
+          <div class="landing-content">
+            <div class="title-wrap">
+              <h1>DREAM TONIGHT</h1>
+              <p class="subtitle">Discover what your brain has planned for tonight.</p>
+              <div class="disclaimer">100% scientifically inaccurate. 100% fun.</div>
+            </div>
+            <button class="primary-button large-button" id="predictLanding">
+              <span class="button-icon">🔮</span> Predict My Dream
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section id="setup-screen" class="screen">
+        <div class="setup-screen">
+          <div class="glass-card setup-card">
+            <div class="setup-card-inner">
+              <div class="section-heading">
+                <h2>Before we predict your dream…</h2>
+              </div>
+
+              <div class="setup-form">
+                <div class="form-group">
+                  <label for="nameInput">What should we call you?</label>
+                  <input type="text" id="nameInput" placeholder="Enter your name..." autocomplete="off" />
+                  <div class="error-message" id="nameError"></div>
+                </div>
+
+                <div class="form-group mood-group">
+                  <h3>How are you feeling tonight?</h3>
+                  <div class="mood-grid" id="moodGrid">
+                    <div class="mood-card" data-mood="happy"><span class="mood-emoji">😊</span><span class="mood-label">Happy</span></div>
+                    <div class="mood-card" data-mood="relaxed"><span class="mood-emoji">😌</span><span class="mood-label">Relaxed</span></div>
+                    <div class="mood-card" data-mood="sleepy"><span class="mood-emoji">😴</span><span class="mood-label">Sleepy</span></div>
+                    <div class="mood-card" data-mood="excited"><span class="mood-emoji">😎</span><span class="mood-label">Excited</span></div>
+                    <div class="mood-card" data-mood="romantic"><span class="mood-emoji">🥰</span><span class="mood-label">Romantic</span></div>
+                    <div class="mood-card" data-mood="curious"><span class="mood-emoji">🤔</span><span class="mood-label">Curious</span></div>
+                    <div class="mood-card" data-mood="normal"><span class="mood-emoji">😐</span><span class="mood-label">Normal</span></div>
+                    <div class="mood-card" data-mood="sad"><span class="mood-emoji">😔</span><span class="mood-label">Sad</span></div>
+                    <div class="mood-card" data-mood="anxious"><span class="mood-emoji">😰</span><span class="mood-label">Anxious</span></div>
+                    <div class="mood-card" data-mood="angry"><span class="mood-emoji">😡</span><span class="mood-label">Angry</span></div>
+                    <div class="mood-card" data-mood="chaotic"><span class="mood-emoji">🤪</span><span class="mood-label">Chaotic</span></div>
+                    <div class="mood-card" data-mood="exhausted"><span class="mood-emoji">🥱</span><span class="mood-label">Exhausted</span></div>
+                  </div>
+                  <div class="error-message" id="moodError"></div>
+                </div>
+
+                <div class="form-group optional-group">
+                  <label for="messageInput">Tell the Dream Machine anything…</label>
+                  <textarea id="messageInput" rows="4" placeholder="I saw a cat today…"></textarea>
+                </div>
+
+                <div class="funny-disclaimer">
+                  <span>Your mood may or may not affect your dream. We have absolutely no idea.</span>
+                </div>
+
+                <button class="primary-button start-button" id="startPrediction" disabled>
+                  <span class="button-icon">✨</span> Start Dream Prediction
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="loading-screen" class="screen">
+        <div class="loading-screen">
+          <div class="loading-card glass-card">
+            <div class="orb-wrap">
+              <div class="dream-orb">
+                <span class="orb-core">🔮</span>
+                <span class="orbit orbit-one"></span>
+                <span class="orbit orbit-two"></span>
+                <span class="orb-particle orb-p1">✦</span>
+                <span class="orb-particle orb-p2">✦</span>
+                <span class="orb-particle orb-p3">✦</span>
+              </div>
+            </div>
+            <div class="dream-orb-title">🔮 DREAM ORB</div>
+            <div class="loading-message" id="loadingMessage">Connecting to subconscious...</div>
+            <div class="progress-wrapper">
+              <div class="progress-track">
+                <div class="progress-bar" id="progressBar"></div>
+              </div>
+              <div class="progress-percent" id="progressText">0%</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="good-dream-screen" class="screen">
+        <div class="result-screen good-result-screen">
+          <div class="result-card glass-card">
+            <div class="result-header">
+              <h2>🌙 GOOD DREAM DETECTED</h2>
+            </div>
+            <div class="dream-text-block">
+              <p id="goodDreamText" class="dream-text"></p>
+            </div>
+            <div class="probability-block">
+              <div class="probability-label">Dream Probability: <span id="dreamProbability">87%</span></div>
+              <div class="probability-track">
+                <div class="probability-bar" id="probabilityBar"></div>
+              </div>
+              <div class="scientific-note">This number was scientifically calculated by absolutely nobody.</div>
+            </div>
+            <div class="depth-meter-wrap">
+              <div class="depth-meter-head">
+                <span class="depth-meter-label">Dream Depth</span>
+                <span class="depth-meter-value" id="goodDepthLevel">87%</span>
+              </div>
+              <div class="depth-meter-scale" aria-label="Dream depth scale">
+                <span class="depth-scale scale-light">Light</span>
+                <span class="depth-scale scale-soft">Soft</span>
+                <span class="depth-scale scale-bright">Bright</span>
+                <span class="depth-scale scale-deep">Deep</span>
+              </div>
+              <div class="depth-meter-track">
+                <div class="depth-meter-fill" id="goodDepthMeter"></div>
+              </div>
+              <div class="depth-meter-flash">✦</div>
+            </div>
+            <div class="dream-animation-zone">
+              <div class="dream-animation dream-flying">
+                <span class="animate-cloud cloud-a">☁</span>
+                <span class="animate-cloud cloud-b">☁</span>
+                <span class="animate-star star-a">✦</span>
+                <span class="animate-star star-b">✦</span>
+                <span class="moon-small">☽</span>
+                <span class="flying-silhouette">♬</span>
+              </div>
+            </div>
+            <div class="result-buttons">
+              <button class="primary-button sleep-button" id="sleepNowGood">
+                <span class="button-icon">😴</span> Sleep Now
+              </button>
+              <button class="secondary-button predict-again" id="predictAgainGood">
+                <span class="button-icon">🔮</span> Predict Again
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="nightmare-screen" class="screen">
+        <div class="result-screen nightmare-result-screen">
+          <div class="result-card glass-card nightmare-card">
+            <div class="result-header nightmare-header">
+              <h2>⚠️ NIGHTMARE DETECTED</h2>
+            </div>
+            <div class="dream-text-block">
+              <p id="nightmareText" class="dream-text nightmare-text"></p>
+            </div>
+            <div class="probability-block">
+              <div class="probability-label">Nightmare Intensity: <span id="nightmareIntensity">93%</span></div>
+              <div class="probability-track">
+                <div class="probability-bar nightmare-bar" id="nightmareBar"></div>
+              </div>
+              <div class="scientific-note">We strongly recommend absolutely nothing.</div>
+            </div>
+            <div class="depth-meter-wrap depth-meter-nightmare">
+              <div class="depth-meter-head">
+                <span class="depth-meter-label">Dream Depth</span>
+                <span class="depth-meter-value" id="nightmareDepthLevel">92%</span>
+              </div>
+              <div class="depth-meter-scale" aria-label="Dream depth scale">
+                <span class="depth-scale scale-light">Light</span>
+                <span class="depth-scale scale-soft">Soft</span>
+                <span class="depth-scale scale-bright">Bright</span>
+                <span class="depth-scale scale-deep">Deep</span>
+              </div>
+              <div class="depth-meter-track">
+                <div class="depth-meter-fill nightmare-depth-meter" id="nightmareDepthMeter"></div>
+              </div>
+              <div class="depth-meter-flash">✦</div>
+            </div>
+            <div class="dream-animation-zone nightmare-zone">
+              <div class="dream-animation nightmare-animation">
+                <span class="duck duck-one">🦆</span>
+                <span class="duck duck-two">🦆</span>
+                <span class="duck duck-three">🦆</span>
+                <span class="fog fog-one">☁</span>
+                <span class="fog fog-two">☁</span>
+                <span class="loading-lines">
+                  <span>99%</span><span>98%</span><span>99%</span>
+                </span>
+              </div>
+            </div>
+            <div class="result-buttons">
+              <button class="primary-button sleep-button" id="sleepNowNightmare">
+                <span class="button-icon">😴</span> Sleep Now
+              </button>
+              <button class="secondary-button predict-again" id="predictAgainNightmare">
+                <span class="button-icon">🔮</span> Predict Again
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="sleep-screen" class="screen">
+        <div class="sleep-screen">
+          <div class="sleep-card glass-card">
+            <div class="sleep-card-content">
+              <h2 id="sleepGreeting">🌙 Goodnight, Friend!</h2>
+              <p class="sleep-scheduled">Your dream has been successfully scheduled.</p>
+              <div class="sleep-progress">
+                <div class="sleep-status-row">Entering dream mode...</div>
+                <div class="sleep-status-row">Dream installation: <span id="dreamInstallPercent">87%</span>...</div>
+                <div class="sleep-status-row">Please do not disturb the subconscious.</div>
+              </div>
+              <div class="sleep-visual">
+                <span class="sleep-moon">☽</span>
+                <span class="sleep-cloud">☁</span>
+                <span class="sleep-cloud">☁</span>
+                <span class="sleep-star">✦</span>
+                <span class="sleep-star">✦</span>
+                <span class="sleep-z">Zzz...</span>
+              </div>
+              <div class="sleep-final">Sweet dreams 😴</div>
+              <button class="primary-button wake-button" id="wakeButton">
+                <span class="button-icon">☀</span> Wake Up
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-title">DREAM TONIGHT • A TinkerHub Useless Project</div>
+      <div class="footer-small">No dreams were scientifically predicted during the development of this website.</div>
+    </footer>
+  </div>
+
+  <aside class="dream-guide" id="dreamGuide" aria-label="Dream Guide">
+    <div class="dream-guide-shell">
+      <section class="dream-guide-panel" id="dreamGuidePanel">
+        <div class="dream-guide-header">
+          <span class="dream-guide-brand">
+            <span class="guide-brand-icon">☁</span>
+            <span class="guide-brand-text">Dream Guide</span>
+          </span>
+          <button class="dream-guide-close" id="guideClose" aria-label="Minimize dream guide">×</button>
+        </div>
+
+        <div class="dream-guide-content">
+          <div class="guide-mascot-wrap">
+            <div class="guide-star-mascot" aria-hidden="true">
+              <span class="star-spark star-spark-one">✦</span>
+              <span class="star-spark star-spark-two">✦</span>
+              <span class="star-shine">
+                <span class="star-shine-eye star-shine-eye-left">✦</span>
+                <span class="star-shine-eye star-shine-eye-right">✦</span>
+                <span class="star-smile">✦</span>
+              </span>
+              <span class="star-tail">✧</span>
+            </div>
+            <span class="guide-wave" aria-hidden="true">✧</span>
+            <span class="guide-zzz" aria-hidden="true">Zzz</span>
+          </div>
+
+          <div class="guide-speech-bubble">
+            <span class="guide-speech" id="guideSpeech">I’m listening for dreams.</span>
+            <span class="guide-cursor" id="guideCursor">▌</span>
+          </div>
+
+          <div class="guide-quick-replies">
+            <button class="guide-reply" data-guide-reply="What is this?">What is this?</button>
+            <button class="guide-reply" data-guide-reply="Show dreams">Show dreams</button>
+            <button class="guide-reply" data-guide-reply="Help">Help</button>
+          </div>
+        </div>
+      </section>
+
+      <button class="dream-guide-open" id="guideRestore" aria-label="Open Dream Guide" aria-expanded="false">
+        <span class="guide-open-icon">☁</span>
+      </button>
+    </div>
+  </aside>
+
+  <div class="modal-backdrop" id="aboutModal">
+    <div class="modal-card">
+      <button class="modal-close" id="closeModal" aria-label="Close">×</button>
+      <div class="modal-title">About Dream Predictor</div>
+      <div class="modal-text">
+        <p>Dream Predictor is a completely useless experimental project that pretends to predict your dreams before you sleep.</p>
+        <p>It has absolutely no scientific accuracy.</p>
+        <p><strong>Built for fun. Powered by questionable science.</strong></p>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
